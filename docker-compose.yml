@@ -1,9 +1,8 @@
 version: '2'
 services:
   elasticsearch:
-    build: logstash/
+    build: elasticsearch/
     image: initiumlab/analytics-elasticsearch:2.3.4-1
-    command: elasticsearch -Des.network.host=0.0.0.0
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -11,7 +10,6 @@ services:
   logstash:
     build: logstash/
     image: initiumlab/analytics-logstash:2.3.4-1
-    command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
     ports:

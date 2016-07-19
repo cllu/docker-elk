@@ -1,16 +1,14 @@
 # Docker ELK stack
 
-[![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Run the latest version of the ELK (Elasticseach, Logstash, Kibana) stack with Docker and Docker-compose.
+Run the ELK (Elasticseach, Logstash, Kibana) stack with Docker and Docker-compose.
 
 It will give you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticseach and the visualization power of Kibana.
 
 Based on the official images:
 
-* [elasticsearch](https://registry.hub.docker.com/_/elasticsearch/)
-* [logstash](https://registry.hub.docker.com/_/logstash/)
-* [kibana](https://registry.hub.docker.com/_/kibana/)
+* [elasticsearch](https://registry.hub.docker.com/_/elasticsearch/), v2.3.4
+* [logstash](https://registry.hub.docker.com/_/logstash/), v2.3.4
+* [kibana](https://registry.hub.docker.com/_/kibana/), v4.5.3
 
 # Requirements
 
@@ -19,16 +17,6 @@ Based on the official images:
 1. Install [Docker](http://docker.io).
 2. Install [Docker-compose](http://docs.docker.com/compose/install/).
 3. Clone this repository
-
-## SELinux
-
-On distributions which have SELinux enabled out-of-the-box you will need to either re-context the files or set SELinux into Permissive mode in order for docker-elk to start properly.
-For example on Redhat and CentOS, the following will apply the proper context:
-
-````bash
-.-root@centos ~
--$ chcon -R system_u:object_r:admin_home_t:s0 docker-elk/
-````
 
 # Usage
 
