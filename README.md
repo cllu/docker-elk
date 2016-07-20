@@ -18,6 +18,12 @@ Based on the official images:
 2. Install [Docker-compose](http://docs.docker.com/compose/install/).
 3. Clone this repository
 
+## Filebeats:
+
+```bash
+curl -XPUT 'http://192.168.99.100:9200/_template/filebeat?pretty' -d@filebeat/index-template.json
+```
+
 # Usage
 
 Start the ELK stack using *docker-compose*:
