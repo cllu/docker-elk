@@ -66,9 +66,9 @@ Apache log are identified by existence of `command==apache2-foreground`:
 echo '{"version": "1.1","host":"example.org","command": "apache2-foreground", "message":"173.245.62.180 - - [22/Jul/2016:13:55:29 +0000] \"GET /ELK HTTP/1.1\" 200 5899 \"https://wiki.initiumlab.com/w/index.php?title=ELK&action=edit\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\""}' | tee /dev/tty | gzip --stdout | nc -u -w 1 $ELK_IP 12201
 ```
 
-Nginx log are identified by `type==nginx-access`:
+Nginx log are identified by `type==nginx_access`:
 
 ```bash
-echo '{"version": "1.1","host":"example.org","type": "nginx-access", "message":"192.241.205.129 - - [19/Jul/2016:23:59:56 +0800] \"GET /article/20160719-dailynews-germany-train-axe/ HTTP/1.1\" 200 13840 \"-\" \"Mozilla/5.0 (Linux; Android 5.1; 8681-A01 Build/LMY47D) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/39.0.0.0 Mobile Safari/537.36\""}' | tee /dev/tty | gzip --stdout | nc -u -w 1 $ELK_IP 12201
+echo '{"version": "1.1","host":"example.org","type": "nginx_access", "message":"192.241.205.129 - - [19/Jul/2016:23:59:56 +0800] \"GET /article/20160719-dailynews-germany-train-axe/ HTTP/1.1\" 200 13840 \"-\" \"Mozilla/5.0 (Linux; Android 5.1; 8681-A01 Build/LMY47D) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/39.0.0.0 Mobile Safari/537.36\""}' | tee /dev/tty | gzip --stdout | nc -u -w 1 $ELK_IP 12201
 ```
 
