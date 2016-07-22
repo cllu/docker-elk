@@ -15,6 +15,7 @@ services:
     ports:
       - "5000:5000"
       - "5044:5044"
+      - "12201:12201/udp"
     links:
       - elasticsearch
 

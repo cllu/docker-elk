@@ -1,26 +1,10 @@
 filebeat:
-  # List of prospectors to fetch data.
   prospectors:
-    # Each - is a prospector. Below are the prospector specific configurations
     -
-      # Paths that should be crawled and fetched. Glob based paths.
-      # For each file found under this path, a harvester is started.
       paths:
-        #- "/var/log/*.log"
-        #- "/var/log/*.log"
-        - "/Users/cllu/Projects/docker-elk/data/logs/*.log"
-
-      # Type of the files. Based on this the way the file is read is decided.
-      # The different types cannot be mixed in one prospector
-      #
-      # Possible options are:
-      # * log: Reads every line of the log file (default)
-      # * stdin: Reads the standard in
-      input_type: log
+        - /var/log/nginx/*.log
+      document_type: nginx_access
 
 output:
   logstash:
     hosts: ["192.168.99.100:5044"]
-
-    # Optional load balance the events between the Logstash hosts
-    #loadbalance: true
