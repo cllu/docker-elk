@@ -8,3 +8,4 @@ filebeat:
 output:
   logstash:
     hosts: ["192.168.99.100:5044"]
+    index: theinitium.com
