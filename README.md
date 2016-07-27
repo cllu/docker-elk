@@ -44,6 +44,9 @@ By default, the stack exposes the following ports:
 
 ## Testing
 
+For debugging purpose, the `./logstash/31-output-stdout.conf` will be mounted at the logstash config directory and enable
+`stdout` output.
+
 ### By input type
 
 To simulate a GELF log (with $ELK_IP pointing to the ELK server ip, such as `ELK_IP=$(docker-machine ip default)`):

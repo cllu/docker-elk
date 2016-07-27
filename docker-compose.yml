@@ -12,6 +12,7 @@ services:
     image: initiumlab/analytics-logstash:2.3.4-1
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
+      - ./logstash/config/31-output-stdout.conf:/etc/logstash/conf.d/31-output-stdout.conf
     ports:
       - "5000:5000"
       - "5044:5044"
