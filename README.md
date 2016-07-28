@@ -21,6 +21,18 @@ The following log filters are supported, which should be specified via the `[@me
 * `apache_access`: Apache access log
 * `nginx_access`: nginx access log
 
+Both apache_access and nginx_access has the following fields:
+
+* `clientip`, and geoip filter use this to generate `geoip` field
+* `agent`, and useragent filter use this to generate `useragent` field
+* `bytes`, response size in number of bytes (integer number)
+* `verb`, GET/POST etc
+* `request`, the request path, including the query parameters
+* `httpversion`
+* `response`, response code, such as 200
+* `request_time`, nginx request processing time (float number)
+* `referrer`, HTTP referrer
+
 ## Setup
 
 Start the ELK stack using *docker-compose*:
