@@ -1,4 +1,4 @@
-FROM elasticsearch:2.3.4
+FROM elasticsearch:5.5.2 
 
 COPY config /usr/share/elasticsearch/config
 

@@ -2,14 +2,24 @@ version: '2'
 services:
   elasticsearch:
     build: elasticsearch/
-    image: initiumlab/analytics-elasticsearch:2.3.4-1
+    image: initiumlab/analytics-elasticsearch:5.5.2-1
     ports:
       - "9200:9200"
       - "9300:9300"
 
+  curator:
+    build: curator/
+    image: initiumlab/analytics-elasticsearch-curator:5.2.0-1
+    links:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_HOST: elasticsearch
+      ELASTICSEARCH_PORT: 9200
+      MAX_INDEX_AGE: 2
+
   logstash:
     build: logstash/
-    image: initiumlab/analytics-logstash:2.3.4-1
+    image: initiumlab/analytics-logstash:5.5.2-1
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
       - ./logstash/config/31-output-stdout.conf:/etc/logstash/conf.d/31-output-stdout.conf
@@ -22,7 +32,7 @@ services:
 
   kibana:
     build: kibana/
-    image: initiumlab/analytics-kibana:4.5.3-1
+    image: initiumlab/analytics-kibana:5.5.2-1
     volumes:
       - ./kibana/config/:/opt/kibana/config/
     ports:

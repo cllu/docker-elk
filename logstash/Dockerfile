@@ -1,4 +1,4 @@
-FROM logstash:2.3.4
+FROM logstash:5.5.2
 
 RUN logstash-plugin install logstash-input-beats
 
