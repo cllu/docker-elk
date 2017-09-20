@@ -24,6 +24,7 @@ services:
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
       - ./logstash/config/31-output-stdout.conf:/etc/logstash/conf.d/31-output-stdout.conf
+      - ./logs:/logs
     ports:
       - "5000:5000"
       - "5044:5044"
@@ -36,6 +37,7 @@ services:
     image: initiumlab/analytics-kibana:5.5.2-1
     volumes:
       - ./kibana/config/:/opt/kibana/config/
+      - ./data:/usr/share/elasticsearch/data
     ports:
       - "5601:5601"
     links:
