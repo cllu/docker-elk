@@ -3,6 +3,8 @@ services:
   elasticsearch:
     build: elasticsearch/
     image: initiumlab/analytics-elasticsearch:5.5.2-1
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -10,13 +12,14 @@ services:
   curator:
     build: curator/
     image: initiumlab/analytics-elasticsearch-curator:5.2.0-1
+    volumes:
+      - ./curator/tasks/purge-old-indices.sh:/etc/periodic/purge-old-indices.sh
+      - ./curator/curator.yml:/etc/curator/curator.yml
+      - ./curator/actions.yml:/etc/curator/actions.yml
     links:
       - elasticsearch
     environment:
       ELASTICSEARCH_HOST: elasticsearch
-      ELASTICSEARCH_PORT: 9200
-      MAX_INDEX_AGE: 2
-      INDEX_PREFIX: logstash
 
   logstash:
     build: logstash/
@@ -37,7 +40,6 @@ services:
     image: initiumlab/analytics-kibana:5.5.2-1
     volumes:
       - ./kibana/config/:/opt/kibana/config/
-      - ./data:/usr/share/elasticsearch/data
     ports:
       - "5601:5601"
     links:
