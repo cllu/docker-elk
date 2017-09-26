@@ -11,6 +11,7 @@ ADD tasks/purge-old-indices.sh /etc/periodic/
 
 
 RUN printf "\n*\t*\t*\t*\t*\tbash /etc/periodic/purge-old-indices.sh" >> /var/spool/cron/crontabs/root
+RUN printf "\n*\t*\t*\t*\t*\ttouch /tmp/cron-when-executed" >> /var/spool/cron/crontabs/root
 
 ENTRYPOINT [ "/docker-entrypoint.sh"]
 CMD ["cron", "-f"]
